@@ -6,9 +6,7 @@ package UI;
 
 
 
-public class juego {
+public class interfazGrafica {
 
-    public static void main(String[] args) {
-        System.out.println("Hello World!");
-    }
+
 }

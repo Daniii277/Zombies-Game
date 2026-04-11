@@ -6,7 +6,7 @@ package Entidades;
 
 
 
-public class Conejo implements Comestible {
+public class Conejo extends Entidad implements Comestible {
 
     private final String name;
 
@@ -23,5 +23,12 @@ public class Conejo implements Comestible {
     //METHODS
     public void eaten(){
 
+    }
+
+    @Override
+    public String toString(){
+        return ("\nnombre : " + this.name +
+                "\nCasilla : " + this.getCasillaActual().toString() + "\n"
+        );
     }
 }

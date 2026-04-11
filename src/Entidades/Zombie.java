@@ -66,4 +66,15 @@ public class Zombie extends Entidad{
 
     }
 
+    @Override
+    public String toString(){
+        return( "\nnombre : " + this.name + 
+                "\nestado : " + this.zombieState + 
+                "\ndaño recibido : " + this.damageReceived +
+                "\nhambre : " + this.hungerLevel +
+                "\nCasilla : " + this.getCasillaActual().toString() +
+                "\nEntidades comidas : " + this.itemsConsumed + "\n"
+        );
+    }
+
 }

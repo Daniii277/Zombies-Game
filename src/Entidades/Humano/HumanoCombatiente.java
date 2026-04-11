@@ -20,4 +20,10 @@ public class humanoCombatiente extends Humano {
     public tipoHumano getType(){
         return this.type;
     }
+
+    //METHODS
+    @Override
+    public String toString(){
+        return(super.toString() + "\nTipo : " + this.type);
+    }
 }

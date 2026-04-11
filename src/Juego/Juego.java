@@ -6,5 +6,5 @@ package Juego;
 
 
 public class Juego  {
-    
+    private Tablero gameBoard;
 }

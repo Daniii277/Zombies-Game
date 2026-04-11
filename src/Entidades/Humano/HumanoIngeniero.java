@@ -13,4 +13,10 @@ public class humanoIngeniero extends Humano{
     public humanoIngeniero(){
         super(3,1);
     }
+
+    //METHODS
+    @Override
+    public String toString(){
+        return(super.toString() + "\nTipo : Ingeniero");
+    }
 }

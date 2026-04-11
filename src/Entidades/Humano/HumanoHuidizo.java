@@ -12,5 +12,11 @@ public class humanoHuidizo extends Humano{
    public humanoHuidizo(){
         super(1,1);    
    }
+
+   //METHODS
+    @Override
+    public String toString(){
+        return(super.toString() + "\nTipo : Huidizo");
+    }
 }
 

@@ -45,5 +45,11 @@ public class Humano extends Entidad implements Comestible {
 
     }
 
+    @Override
+    public String toString(){
+        return("\naguante : " + this.endurance + 
+                "\nactivaciones : " + this.activations + "\n"
+        );
+    }
      
 }
