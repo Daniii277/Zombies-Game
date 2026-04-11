@@ -15,4 +15,9 @@ public class humanoCombatiente extends Humano {
         super(type.endurance, type.activations);
         this.type = type;
     }
+
+    //GETTERS
+    public tipoHumano getType(){
+        return this.type;
+    }
 }

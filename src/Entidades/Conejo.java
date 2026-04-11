@@ -8,10 +8,20 @@ package Entidades;
 
 public class Conejo implements Comestible {
 
-    private String name;
+    private final String name;
 
+    //CONSTRUCTOR
     public Conejo(String name){
         this.name = name;
     }
 
+    //GETTERS
+    public String getName(){
+        return this.name;
+    }
+
+    //METHODS
+    public void eaten(){
+
+    }
 }
