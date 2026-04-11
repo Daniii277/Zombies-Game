@@ -6,6 +6,12 @@ package Entidades;
 
 
 
-public class Conejo  {
+public class Conejo implements Comestible {
+
+    private String name;
+
+    public Conejo(String name){
+        this.name = name;
+    }
 
 }

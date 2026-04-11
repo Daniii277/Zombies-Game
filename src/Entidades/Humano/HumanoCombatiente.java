@@ -6,6 +6,13 @@ package Entidades.Humano;
 
 
 
-public class HumanoCombatiente {
+public class humanoCombatiente extends Humano {
     
+    private tipoHumano type;
+
+    //CONSTRUCTOR
+    public humanoCombatiente(tipoHumano type){   
+        super(type.endurance, type.activations);
+        this.type = type;
+    }
 }

@@ -8,6 +8,9 @@ package Entidades.Humano;
  *
  * @author danie
  */
-public class HumanoIngeniero {
-    
+public class humanoIngeniero extends Humano{
+    //CONSTRUCTOR
+    public humanoIngeniero(){
+        super(3,1);
+    }
 }

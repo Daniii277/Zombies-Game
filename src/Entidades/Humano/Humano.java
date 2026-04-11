@@ -1,9 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+package Entidades.Humano;
+import Entidades.Comestible;
 
+public class Humano implements Comestible {
+    private int endurance;
+    private int activations;
 
-public class Humano  {
-    
+    //CONSTRUCTOR
+    public Humano(int endurance, int activations){
+        this.endurance = endurance;
+        this.activations = activations;
+    }
+
+     
 }

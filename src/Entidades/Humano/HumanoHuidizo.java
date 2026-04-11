@@ -6,7 +6,11 @@ package Entidades.Humano;
 
 
 
-public class HumanoHuidizo {
-   
+public class humanoHuidizo extends Humano{
+
+    //CONSTRUCTOR
+   public humanoHuidizo(){
+        super(1,1);    
+   }
 }
 
