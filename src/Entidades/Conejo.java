@@ -33,11 +33,6 @@ public class Conejo extends Entidad implements Comestible {
     }
 
     @Override
-    public void attack(Entidad objetive) {
-
-    }
-
-    @Override
     public void move(Casilla c) {
 
     }

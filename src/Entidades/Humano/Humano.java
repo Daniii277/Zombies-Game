@@ -1,7 +1,6 @@
 package Entidades.Humano;
-import Entidades.Comestible;
-import Entidades.Entidad;
 import Juego.Casilla;
+import Entidades.*;
 
 public class Humano extends Entidad implements Comestible {
     private int endurance;
@@ -28,20 +27,11 @@ public class Humano extends Entidad implements Comestible {
 
     }
 
-    public void searchFood(){
-
-    }
-
     @Override
     public String toString(){
         return("\naguante : " + this.endurance + 
                 "\nactivaciones : " + this.activations + "\n"
         );
-    }
-
-    @Override
-    public void attack(Entidad objetive) {
-
     }
 
     @Override

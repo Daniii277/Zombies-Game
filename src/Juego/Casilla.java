@@ -12,6 +12,7 @@ public class Casilla  {
     private int coordY;
     private ArrayList<Entidad> entidades;
 
+    
     public Casilla(int x, int y){
         this.coordX = x;
         this.coordY = y;

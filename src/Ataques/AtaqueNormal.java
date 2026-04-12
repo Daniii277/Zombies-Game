@@ -10,6 +10,5 @@ public class AtaqueNormal extends Ataque{
 
     public AtaqueNormal(String name) {
         super(name, 1, 4, 0);
-    }
-
+    }  
 }

@@ -68,6 +68,66 @@ public class Zombie extends Entidad{
 
 
     //METHODS 
+    public void addHunger(){
+        this.hungerLevel++;
+    }
+
+    public void substractHunger(){
+        this.hungerLevel--;
+    }
+
+    public void getDamage(){
+        this.damageReceived++;
+    }
+
+    public Entidad searchFood(){
+        for(int i = 0; i < this.getCasillaActual().getEntidades().size(); i++){
+            
+        }
+        for(Entidad entidad : this.getCasillaActual().getEntidades()){
+            if(entidad instanceof Conejo){
+                return entidad;
+            }
+        }
+        return null;
+    }
+
+    public boolean eat(){
+        Entidad e = this.searchFood();
+        if(e != null){
+            e.getCasillaActual().getEntidades().remove(e);
+            e.setCasillaActual(null);
+            this.itemsConsumed.add((Comestible) e);
+            this.substractHunger();
+            return true;
+        }
+        return false;
+    }
+
+
+    @Override
+    public void move(Casilla c) {
+        //Se elimina de la lista de entidades de su casilla anterior
+        this.getCasillaActual().getEntidades().remove(this);
+        //Se modifica la casilla actual en la entidad
+        this.setCasillaActual(c);
+    }
+
+    public void basicAttack(Casilla c){
+        //Calculo los impactos que obtiene el ataque
+        int impacts = basicAttack.countImpacts(this.hungerLevel);
+        ArrayList<Entidad> ObjetivesList = orderObjetives(c.getEntidades());
+        
+    }
+
+    private ArrayList<Entidad> orderObjetives(ArrayList<Entidad> entidades) {
+        ArrayList<Entidad> result = new ArrayList<>();
+        return result;
+    }
+
+    public void SpecialAttack(Casilla c){
+
+    }
 
     @Override
     public String toString(){
@@ -78,19 +138,6 @@ public class Zombie extends Entidad{
                 "\nCasilla : " + this.getCasillaActual().toString() +
                 "\nEntidades comidas : " + this.itemsConsumed + "\n"
         );
-    }
-
-    @Override
-    public void attack(Entidad objetive) {
-
-    }
-
-    @Override
-    public void move(Casilla c) {
-        //Se elimina de la lista de entidades de su casilla anterior
-        this.getCasillaActual().getEntidades().remove(this);
-        //Se modifica la casilla actual en la entidad
-        this.setCasillaActual(c);
     }
 
 }
