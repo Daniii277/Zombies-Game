@@ -1,6 +1,7 @@
 package Entidades.Humano;
 import Entidades.Comestible;
 import Entidades.Entidad;
+import Juego.Casilla;
 
 public class Humano extends Entidad implements Comestible {
     private int endurance;
@@ -27,20 +28,6 @@ public class Humano extends Entidad implements Comestible {
 
     }
 
-    @Override
-    public void move() {
-
-    }
-
-    @Override
-    public void attack() {
-
-    }
-
-    public void doNothing(){
-
-    }
-
     public void searchFood(){
 
     }
@@ -50,6 +37,20 @@ public class Humano extends Entidad implements Comestible {
         return("\naguante : " + this.endurance + 
                 "\nactivaciones : " + this.activations + "\n"
         );
+    }
+
+    @Override
+    public void attack(Entidad objetive) {
+
+    }
+
+    @Override
+    public void move(Casilla c) {
+        //Se elimina de la lista de entidades de su casilla anterior
+        this.getCasillaActual().getEntidades().remove(this);
+        //Se modifica la casilla actual en la entidad
+        this.setCasillaActual(c);
+
     }
      
 }

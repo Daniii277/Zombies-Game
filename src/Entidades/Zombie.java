@@ -5,6 +5,10 @@
 package Entidades;
 import java.util.*;
 
+import Ataques.Ataque;
+import Ataques.AtaqueNormal;
+import Juego.Casilla;
+
 
 
 public class Zombie extends Entidad{
@@ -14,6 +18,8 @@ public class Zombie extends Entidad{
     private ArrayList<Comestible> itemsConsumed;
     private int damageReceived;
     private int hungerLevel;
+    private final Ataque basicAttack;
+    private Ataque SpecialAttack;
 
 
     //CONSTRUCTOR
@@ -23,6 +29,8 @@ public class Zombie extends Entidad{
         this.itemsConsumed = new ArrayList<>();
         this.damageReceived = 0;
         this.hungerLevel = 0;
+        this.basicAttack = new AtaqueNormal("Devorar");
+        
     }
 
     //GETTERS AND SETTERS
@@ -54,17 +62,12 @@ public class Zombie extends Entidad{
         this.zombieState = state;
     }
 
+    public void setSpecialAttack(Ataque Special){
+        this.SpecialAttack = Special;
+    }
+
 
     //METHODS 
-    @Override
-    public void move() {
-
-    }
-
-    @Override
-    public void attack() {
-
-    }
 
     @Override
     public String toString(){
@@ -75,6 +78,19 @@ public class Zombie extends Entidad{
                 "\nCasilla : " + this.getCasillaActual().toString() +
                 "\nEntidades comidas : " + this.itemsConsumed + "\n"
         );
+    }
+
+    @Override
+    public void attack(Entidad objetive) {
+
+    }
+
+    @Override
+    public void move(Casilla c) {
+        //Se elimina de la lista de entidades de su casilla anterior
+        this.getCasillaActual().getEntidades().remove(this);
+        //Se modifica la casilla actual en la entidad
+        this.setCasillaActual(c);
     }
 
 }

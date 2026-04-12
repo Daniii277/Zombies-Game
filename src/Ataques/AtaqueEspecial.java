@@ -6,7 +6,11 @@ package Ataques;
 
 
 
-public class AtaqueEspecial  {
+public class AtaqueEspecial extends Ataque{
+
+    public AtaqueEspecial(String name, int power, int successValue, int scope) {
+        super(name, power, successValue, scope);
+    }
 
 }
 

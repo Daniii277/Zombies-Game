@@ -4,7 +4,7 @@
  */
 package Entidades;
 
-
+import Juego.Casilla;
 
 public class Conejo extends Entidad implements Comestible {
 
@@ -30,5 +30,15 @@ public class Conejo extends Entidad implements Comestible {
         return ("\nnombre : " + this.name +
                 "\nCasilla : " + this.getCasillaActual().toString() + "\n"
         );
+    }
+
+    @Override
+    public void attack(Entidad objetive) {
+
+    }
+
+    @Override
+    public void move(Casilla c) {
+
     }
 }

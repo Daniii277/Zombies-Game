@@ -23,12 +23,6 @@ public abstract class Entidad {
         return this.casillaActual;
     }
 
-    //METHODS
-    public void move() {
-        
-    }
-
-    public void attack(){
-
-    }
+    public abstract void attack(Entidad objetive);
+    public abstract void move(Casilla c);
 }
