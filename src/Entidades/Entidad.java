@@ -8,10 +8,11 @@ import Juego.Casilla;
 
 public abstract class Entidad {
     private Casilla casillaActual;
-
+    private estado state;
 
     public Entidad(){
         this.casillaActual = null;
+        this.state = estado.ACTIVO;
     }
 
     //GETTERS AND SETTERS
@@ -19,8 +20,16 @@ public abstract class Entidad {
         this.casillaActual = casilla;
     }
 
+    public void setState(estado newState){
+        this.state = newState;
+    }
+
     public Casilla getCasillaActual(){
         return this.casillaActual;
+    }
+
+    public estado getState(){
+        return this.state;
     }
 
     public abstract void move(Casilla c);

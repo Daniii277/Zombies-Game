@@ -8,6 +8,7 @@ public class Humano extends Entidad implements Comestible {
 
     //CONSTRUCTOR
     public Humano(int endurance, int activations){
+
         this.endurance = endurance;
         this.activations = activations;
     }

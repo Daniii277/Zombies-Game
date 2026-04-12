@@ -8,12 +8,11 @@ import java.util.*;
 import Ataques.Ataque;
 import Ataques.AtaqueNormal;
 import Juego.Casilla;
-
+import Entidades.Humano.*;
 
 
 public class Zombie extends Entidad{
     private final String name;
-    private estado zombieState;
     private final int actionsPerRound = 3;
     private ArrayList<Comestible> itemsConsumed;
     private int damageReceived;
@@ -25,7 +24,6 @@ public class Zombie extends Entidad{
     //CONSTRUCTOR
     public Zombie(String name){
         this.name = name;
-        this.zombieState = estado.ACTIVO;
         this.itemsConsumed = new ArrayList<>();
         this.damageReceived = 0;
         this.hungerLevel = 0;
@@ -38,9 +36,6 @@ public class Zombie extends Entidad{
         return this.name;
     }
 
-    public estado getState(){
-        return this.zombieState;
-    }
 
     public int getNumActions(){
         return this.actionsPerRound;
@@ -58,9 +53,6 @@ public class Zombie extends Entidad{
         return this.hungerLevel;
     }
 
-    public void setZombiestate(estado state){
-        this.zombieState = state;
-    }
 
     public void setSpecialAttack(Ataque Special){
         this.SpecialAttack = Special;
@@ -116,13 +108,46 @@ public class Zombie extends Entidad{
     public void basicAttack(Casilla c){
         //Calculo los impactos que obtiene el ataque
         int impacts = basicAttack.countImpacts(this.hungerLevel);
-        ArrayList<Entidad> ObjetivesList = orderObjetives(c.getEntidades());
+        if(impacts <= 0) return;
+        ArrayList<Entidad> objetivesList = orderObjetives(c.getEntidades());
         
+        for(Entidad entity : objetivesList){
+            int endurance = entity instanceof Conejo ? 1 : ((Humano)entity).getEndurance();
+            if(impacts > endurance){
+                //Se elimina a la entidad
+                entity.setState(estado.ELIMINADO);
+                c.getEntidades().remove(entity);
+                System.out.println("Entidad eliminada : " + entity.toString());
+                //Se actualizan los impactos restantes
+                impacts -= endurance;
+            }
+        }
     }
-
+    
+    //Toma solo los humanos y los ordena por prioridad de ataque
     private ArrayList<Entidad> orderObjetives(ArrayList<Entidad> entidades) {
         ArrayList<Entidad> result = new ArrayList<>();
+        for (Entidad entidad : entidades) {
+            if (!(entidad instanceof Zombie)) {
+                result.add(entidad);
+            }
+        }
+        result.sort((a, b) -> getPriority(a) - getPriority(b));
         return result;
+    }
+
+    public int getPriority(Entidad e){
+        if (e instanceof humanoIngeniero) return 1;
+        if(e instanceof humanoCombatiente){
+            if(((humanoCombatiente)e).getType() == tipoHumano.SOLDADO) return 2;
+            if(((humanoCombatiente)e).getType() == tipoHumano.BLINDADO) return 3;
+            if(((humanoCombatiente)e).getType() == tipoHumano.ESPECIALISTA) return 4;
+
+
+        }
+        if(e instanceof humanoHuidizo) return 5;
+        if(e instanceof Conejo) return 6;
+        return 0;
     }
 
     public void SpecialAttack(Casilla c){
@@ -132,7 +157,7 @@ public class Zombie extends Entidad{
     @Override
     public String toString(){
         return( "\nnombre : " + this.name + 
-                "\nestado : " + this.zombieState + 
+                "\nestado : " + this.getState() + 
                 "\ndaño recibido : " + this.damageReceived +
                 "\nhambre : " + this.hungerLevel +
                 "\nCasilla : " + this.getCasillaActual().toString() +

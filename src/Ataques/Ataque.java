@@ -50,10 +50,9 @@ public abstract class Ataque {
         }
         return impacts;
     }
-
-    }
-
 }
+
+
     
     
     

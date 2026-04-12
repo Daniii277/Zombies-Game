@@ -45,7 +45,7 @@ public class Tablero  {
         e.getCasillaActual().getEntidades().remove(e);
         //Si es un zombie se marca como eliminado
         if(e instanceof Zombie){
-            ((Zombie)e).setZombiestate(estado.ELIMINADO);
+            e.setState(estado.ELIMINADO);
         }
     }
 
