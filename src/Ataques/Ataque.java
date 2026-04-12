@@ -38,6 +38,9 @@ public abstract class Ataque {
         return this.scope;
     }
 
+
+    //METHODS
+
     public int countImpacts(int hunger){
         int dices = this.power + hunger;
         int impacts = 0;
@@ -49,6 +52,15 @@ public abstract class Ataque {
             }
         }
         return impacts;
+    }
+
+    @Override
+    public String toString(){
+        return ("\nNombre : " + this.name +
+                "\nPotencia : " + this.power +
+                "\nValor de éxito : " + this.successValue + 
+                "\nAlcance : " + this.scope + "\n"
+        );
     }
 }
 

@@ -111,17 +111,18 @@ public class Zombie extends Entidad{
         if(impacts <= 0) return;
         ArrayList<Entidad> objetivesList = orderObjetives(c.getEntidades());
         
-        for(Entidad entity : objetivesList){
+        Entidad entity = objetivesList.getFirst();
             int endurance = entity instanceof Conejo ? 1 : ((Humano)entity).getEndurance();
             if(impacts > endurance){
                 //Se elimina a la entidad
                 entity.setState(estado.ELIMINADO);
                 c.getEntidades().remove(entity);
+                //Se resta 1 al hambre del zombie
+                this.substractHunger();
                 System.out.println("Entidad eliminada : " + entity.toString());
-                //Se actualizan los impactos restantes
-                impacts -= endurance;
+
             }
-        }
+        
     }
     
     //Toma solo los humanos y los ordena por prioridad de ataque
@@ -151,7 +152,25 @@ public class Zombie extends Entidad{
     }
 
     public void SpecialAttack(Casilla c){
-
+        //Calculo los impactos que obtiene el ataque
+        int impacts = SpecialAttack.countImpacts(this.hungerLevel);
+        if(impacts <= 0) return;
+        ArrayList<Entidad> objetivesList = orderObjetives(c.getEntidades());
+        
+        for(Entidad entity : objetivesList){
+            if(entity instanceof Conejo) continue;
+            int endurance = ((Humano)entity).getEndurance();
+            if(impacts > endurance){
+                //Se elimina a la entidad
+                entity.setState(estado.ELIMINADO);
+                c.getEntidades().remove(entity);
+                System.out.println("Entidad eliminada : " + entity.toString());
+                //Se actualizan los impactos restantes
+                impacts -= endurance;
+            }else{ 
+                break;
+            }
+        }
     }
 
     @Override
