@@ -1,7 +1,36 @@
 package Main;
 
+import java.util.Scanner;
+
+import Entidades.Conejo;
+import Entidades.Entidad;
+import Entidades.Zombie;
+import Juego.*;
 public class Main {
      public static void main(String[] args) {
-        System.out.println("Hello World!");
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Seleccione el número de jugadores : ");
+        int numPlayers = sc.nextInt();
+        Juego game = new Juego(numPlayers);
+        initGame(game);
+    }
+
+    //Se une la lógica de la IG con la del juego
+    public static void initGame(Juego game){
+        while(!game.endCondition()){
+            //PRIMER TURNO : ZOMBIES
+            for(Zombie player : game.getPlayers()){
+                game.nextPlayerTurn(player);
+            }
+            //SEGUNDO TURNO : HUMANOS
+            for(Entidad entity : game.getGameBoard().getEntities()){
+                //Solo para humanos
+                if(!(entity instanceof Zombie || entity instanceof Conejo)){
+                    game.nextHumanTurn(entity);
+                }
+            }
+            System.out.println("\nTurno finalizado\n");
+            System.out.println("Estado del tablero : " + game.getGameBoard().toString());
+        }
     }
 }

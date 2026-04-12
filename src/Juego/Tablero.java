@@ -11,12 +11,14 @@ public class Tablero  {
     private final int size;
     private final Casilla[][] board;
     private ArrayList<Entidad> entities;
+    private final Casilla targetBox;
 
 
     public Tablero(int size){
         this.size = size;
         this.board = new Casilla[size][size];
         this.entities = new ArrayList<>();
+        this.targetBox = new Casilla(size, size);
     }
 
     //GETTERS
@@ -28,6 +30,13 @@ public class Tablero  {
         return this.entities;
     }
 
+    public Casilla getTargetBox(){
+        return this.targetBox;
+    }
+
+    public Casilla[][] getBoard(){
+        return this.board;
+    }
 
     //METHODS
     
@@ -55,6 +64,7 @@ public class Tablero  {
         c.addEntity(e);
 
     }
+
 
 
     @Override

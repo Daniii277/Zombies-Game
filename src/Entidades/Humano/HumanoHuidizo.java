@@ -5,6 +5,7 @@
 package Entidades.Humano;
 
 import Entidades.Entidad;
+import Entidades.Zombie;
 
 public class humanoHuidizo extends Humano{
 

@@ -7,6 +7,9 @@ package UI;
 
 
 public class interfazGrafica {
+    
+    public interfazGrafica(){
 
+    }
 
 }
