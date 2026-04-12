@@ -42,18 +42,17 @@ public class Tablero  {
         //Se borra la entidad de la lista de entidades del tablero
         this.entities.remove(e);
         //Se borra la entidad de la casilla en la que estaba
-        e.getCasillaActual().getEntidades().remove(e);
-        //Si es un zombie se marca como eliminado
-        if(e instanceof Zombie){
-            e.setState(estado.ELIMINADO);
-        }
+        e.getCasillaActual().eliminateEntity(e);
+        //Se marca como eliminado
+        e.setState(estado.ELIMINADO);
+        
     }
 
     public void addEntity(Entidad e, Casilla c){
         //Se añade a la entidad su casilla actual
         e.setCasillaActual(c);
         //Se añade la entidad a la lista de entidades de la casilla
-        c.getEntidades().add(e);
+        c.addEntity(e);
 
     }
 

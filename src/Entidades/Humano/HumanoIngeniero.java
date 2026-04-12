@@ -4,6 +4,9 @@
  */
 package Entidades.Humano;
 
+import Entidades.Entidad;
+import Entidades.Zombie;
+
 /**
  *
  * @author danie
@@ -18,5 +21,14 @@ public class humanoIngeniero extends Humano{
     @Override
     public String toString(){
         return(super.toString() + "\nTipo : Ingeniero");
+    }
+
+    @Override
+    public void attack(Zombie e) {
+        if(e.getCasillaActual().equals(this.getCasillaActual())){
+            e.getDamage(2);
+        }else{
+            e.getDamage(1);
+        }
     }
 }

@@ -42,10 +42,23 @@ public class Casilla  {
 
 
     //METHODS 
+    public void eliminateEntity(Entidad e){
+        this.entidades.remove(e);
+    }
+
+    public void addEntity(Entidad e){
+        this.entidades.add(e);
+    }
+
 
     @Override
     public String toString(){
         return ("(" + this.coordX + ") , (" + this.coordY + ")");
+    }
+
+    public boolean equals(Casilla c){
+        if(c.getCoordX() == this.getCoordX() && c.getCoordY() == this.getCoordY()) return true;
+        return false;
     }
 
 

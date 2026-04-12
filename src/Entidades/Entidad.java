@@ -33,4 +33,9 @@ public abstract class Entidad {
     }
 
     public abstract void move(Casilla c);
+
+    public void attack(Zombie e) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'attack'");
+    }
 }

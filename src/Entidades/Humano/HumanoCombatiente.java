@@ -4,7 +4,8 @@
  */
 package Entidades.Humano;
 
-
+import Entidades.Entidad;
+import Entidades.Zombie;
 
 public class humanoCombatiente extends Humano {
     
@@ -26,4 +27,11 @@ public class humanoCombatiente extends Humano {
     public String toString(){
         return(super.toString() + "\nTipo : " + this.type);
     }
+
+    @Override
+    public void attack(Zombie e) {
+        e.getDamage(1);
+    }
+
+
 }

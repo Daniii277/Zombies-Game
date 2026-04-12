@@ -2,7 +2,7 @@ package Entidades.Humano;
 import Juego.Casilla;
 import Entidades.*;
 
-public class Humano extends Entidad implements Comestible {
+public abstract class Humano extends Entidad implements Comestible {
     private int endurance;
     private int activations;
 
@@ -43,5 +43,7 @@ public class Humano extends Entidad implements Comestible {
         this.setCasillaActual(c);
 
     }
+
+    public abstract void attack(Zombie e);
      
 }

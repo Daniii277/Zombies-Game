@@ -4,7 +4,7 @@
  */
 package Entidades.Humano;
 
-
+import Entidades.Entidad;
 
 public class humanoHuidizo extends Humano{
 
@@ -17,6 +17,11 @@ public class humanoHuidizo extends Humano{
     @Override
     public String toString(){
         return(super.toString() + "\nTipo : Huidizo");
+    }
+
+    @Override
+    public void attack(Zombie e) {
+
     }
 }
 

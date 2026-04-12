@@ -68,8 +68,8 @@ public class Zombie extends Entidad{
         this.hungerLevel--;
     }
 
-    public void getDamage(){
-        this.damageReceived++;
+    public void getDamage(int n){
+        this.damageReceived+= n;
     }
 
     public Entidad searchFood(){
