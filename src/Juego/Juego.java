@@ -5,6 +5,11 @@
 package Juego;
 import java.util.*;
 import Entidades.*;
+import Entidades.Humano.Humano;
+import Entidades.Humano.humanoCombatiente;
+import Entidades.Humano.humanoHuidizo;
+import Entidades.Humano.humanoIngeniero;
+import Entidades.Humano.tipoHumano;
 public class Juego  {
 
     public enum gameState { IN_PROGRESS, VICTORY, LOSE }
@@ -58,11 +63,81 @@ public class Juego  {
     //METHODS
 
     //Lógica del turno de los jugadores
-    public void nextPlayerTurn(Zombie z){
+    public boolean nextPlayerTurn(Zombie z){
+        boolean turnResult = false;
 
+        //Cada jugador tiene 3 activaciones
+        for(int i = 0; i < 3; i++){
+
+
+            //Se comprueba después de cada activación si la partida no deberia finalizar.
+            turnResult = winCondition();
+        }
+        return turnResult;
     }
     //Lógica del turno de los humanos
-    public void nextHumanTurn(Entidad e){
+    public boolean nextHumanTurn(Humano e){
+        boolean turnResult = false;
+        //Según el número de activaciones del humano
+        for(int i = 0; i < e.getActivations(); i++){
+
+            
+            //Se comprueba después de cada activación si la partida no deberia finalizar.
+            turnResult = loseCondition();
+        }
+        return turnResult;
+    }
+
+
+    private void assignRandomBox(Entidad entity) {
+        Random rnd = new Random();
+        int coordX = rnd.nextInt(gameBoard.getSize());
+        int coordY = rnd.nextInt(gameBoard.getSize());
+        Casilla[][] board = gameBoard.getBoard();
+        board[coordX][coordY].addEntity(entity);
+        entity.setCasillaActual(board[coordX][coordY]);
+    }
+
+
+    public void generateRandomHuman(){
+        Random rnd = new Random();
+        int prob = rnd.nextInt(100) + 1; // 1 a 100
+        Entidad h;
+
+        if (prob <= 40) {
+            h = new humanoCombatiente(tipoHumano.SOLDADO);      // 1-40   → 40%
+        } else if (prob <= 65) {
+            h = new humanoCombatiente(tipoHumano.ESPECIALISTA); // 41-65  → 25%
+        } else if (prob <= 90) {
+            h = new humanoCombatiente(tipoHumano.BLINDADO);     // 66-90  → 25%
+        } else {
+            h = new humanoIngeniero();                           // 91-100 → 10%
+        }
+
+        assignRandomBox(h);
+    }
+
+    public void generateRandomRabbit(){
+        Entidad rabbit = new Conejo("Conejo " + gameBoard.getIdRabbit());
+        gameBoard.incrementIdRabbits();
+        assignRandomBox(rabbit);
+
+    }
+
+    public void generateEntities(int humans, int rabbits){
+        //Se crean los humanos
+        for(int i = 0; i < humans; i++){
+            generateRandomHuman();
+        }
+        for(int j = 0; j < rabbits; j++){
+            generateRandomRabbit();
+        }
+    }
+
+    public void generatePlayers(int numPlayers){
+        for(int i = 0; i < numPlayers; i++){
+
+        }
 
     }
 

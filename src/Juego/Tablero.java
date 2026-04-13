@@ -12,6 +12,7 @@ public class Tablero  {
     private final Casilla[][] board;
     private ArrayList<Entidad> entities;
     private final Casilla targetBox;
+    private static int idRabbit = 0;
 
 
     public Tablero(int size){
@@ -38,8 +39,20 @@ public class Tablero  {
         return this.board;
     }
 
+    public Casilla getBox(int x, int y){
+        return board[x][y];
+    }
+
+    public int getIdRabbit(){
+        return idRabbit;
+    }
+
     //METHODS
     
+    public void incrementIdRabbits(){
+        idRabbit++;
+    }
+
     public void moveEntity(Entidad e, Casilla c){
         //Se realiza el movimiento si la casilla esta dentro del rango de casillas del tablero
         if(c.getCoordX() <= this.size && c.getCoordY() <= this.size){
