@@ -31,6 +31,16 @@ public class Zombie extends Entidad{
         
     }
 
+    //CONSTRUCTOR VACIO
+    public Zombie(){
+        this.name = "";
+        this.itemsConsumed = new ArrayList<>();
+        this.damageReceived = 0;
+        this.hungerLevel = 0;
+        this.basicAttack = new AtaqueNormal("Devorar");
+
+    }
+
     //GETTERS AND SETTERS
     public String getName(){
         return this.name;
@@ -99,10 +109,9 @@ public class Zombie extends Entidad{
 
     @Override
     public void move(Casilla c) {
-        //Se elimina de la lista de entidades de su casilla anterior
         this.getCasillaActual().getEntidades().remove(this);
-        //Se modifica la casilla actual en la entidad
         this.setCasillaActual(c);
+        c.addEntity(this);
     }
 
     public void basicAttack(Casilla c){

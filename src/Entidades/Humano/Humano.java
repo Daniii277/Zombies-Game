@@ -37,11 +37,9 @@ public abstract class Humano extends Entidad implements Comestible {
 
     @Override
     public void move(Casilla c) {
-        //Se elimina de la lista de entidades de su casilla anterior
         this.getCasillaActual().getEntidades().remove(this);
-        //Se modifica la casilla actual en la entidad
         this.setCasillaActual(c);
-
+        c.addEntity(this);
     }
 
     public abstract void attack(Zombie e);

@@ -80,8 +80,8 @@ public class Juego  {
         boolean turnResult = false;
         //Según el número de activaciones del humano
         for(int i = 0; i < e.getActivations(); i++){
-
             
+
             //Se comprueba después de cada activación si la partida no deberia finalizar.
             turnResult = loseCondition();
         }
@@ -96,6 +96,7 @@ public class Juego  {
         Casilla[][] board = gameBoard.getBoard();
         board[coordX][coordY].addEntity(entity);
         entity.setCasillaActual(board[coordX][coordY]);
+        gameBoard.getEntities().add(entity);
     }
 
 
@@ -105,13 +106,13 @@ public class Juego  {
         Entidad h;
 
         if (prob <= 40) {
-            h = new humanoCombatiente(tipoHumano.SOLDADO);      // 1-40   → 40%
+            h = new humanoCombatiente(tipoHumano.SOLDADO);
         } else if (prob <= 65) {
-            h = new humanoCombatiente(tipoHumano.ESPECIALISTA); // 41-65  → 25%
+            h = new humanoCombatiente(tipoHumano.ESPECIALISTA);
         } else if (prob <= 90) {
-            h = new humanoCombatiente(tipoHumano.BLINDADO);     // 66-90  → 25%
+            h = new humanoCombatiente(tipoHumano.BLINDADO);
         } else {
-            h = new humanoIngeniero();                           // 91-100 → 10%
+            h = new humanoIngeniero();
         }
 
         assignRandomBox(h);
@@ -136,7 +137,11 @@ public class Juego  {
 
     public void generatePlayers(int numPlayers){
         for(int i = 0; i < numPlayers; i++){
-
+            Zombie z = new Zombie();
+            Casilla[][] board = gameBoard.getBoard();
+            board[0][0].addEntity(z);
+            z.setCasillaActual(board[0][0]);
+            this.players.add(z);
         }
 
     }
@@ -145,7 +150,7 @@ public class Juego  {
         if(winCondition()){
             System.out.println("Victoria de los zombies");
             return true;
-        }else if(winCondition()){
+        }else if(loseCondition()){
             System.out.println("Derrota de los zombies");
             return true;
         }

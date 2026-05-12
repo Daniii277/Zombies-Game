@@ -18,8 +18,13 @@ public class Tablero  {
     public Tablero(int size){
         this.size = size;
         this.board = new Casilla[size][size];
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                this.board[i][j] = new Casilla(i, j);
+            }
+        }
         this.entities = new ArrayList<>();
-        this.targetBox = new Casilla(size, size);
+        this.targetBox = this.board[size - 1][size - 1];
     }
 
     //GETTERS

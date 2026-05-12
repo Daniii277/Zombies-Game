@@ -1,0 +1,11 @@
+# Build output
+build/
+dist/
+
+# NetBeans
+nbproject/private/
+nbbuild/
+*.nbattrs
+
+
+Claude.md
