@@ -68,8 +68,28 @@ public class Juego  {
 
         //Cada jugador tiene 3 activaciones
         for(int i = 0; i < 3; i++){
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Elige la acción que quieres realizar : [MOVERSE] [ATACAR] [NADA]");
+            String action = sc.nextLine();
+            action.toLowerCase();
+            sc.close();
+            //IMPLEMENTACIÓN DE LA LÓGICA DE LAS ACCIONES DEL TURNO
+            switch (action) {
+                case "moverse":
+                    
+                    break;
+            
+                case "atacar":
 
+                    break;
 
+                case "nada":
+
+                    break;
+
+                default:
+                    break;
+            }
             //Se comprueba después de cada activación si la partida no deberia finalizar.
             turnResult = winCondition();
         }
@@ -144,6 +164,40 @@ public class Juego  {
             this.players.add(z);
         }
 
+    }
+
+    //Método para encontrar al humano más cercano
+    public void closestHuman(Zombie z){
+
+    }
+
+
+    //Método para mover al humano como una IA
+    public void humanAImove(){
+
+    }
+
+    public void movePlayer(String move, Zombie z){
+        Casilla CurrentPosition = z.getCasillaActual();
+        switch (move) {
+            case "izquierda":
+                
+                break;
+        
+            case "derecha":
+                break;
+
+            case "abajo":
+
+                break;
+
+            case "arriba":
+
+                break;
+
+            default:
+                break;
+        }
     }
 
     public boolean endCondition(){
