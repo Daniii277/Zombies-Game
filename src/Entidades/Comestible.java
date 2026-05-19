@@ -5,8 +5,6 @@
 package Entidades;
 
 public interface Comestible {
-    //when a entity that implements this interface is eaten by a zombie, the zombie's hunger is reduced to 0 if the entity is a human,
-    //and is reduced 1 unit if its a rabbit.
-   public void eaten();
+    public void eaten(Zombie z);
 }
 

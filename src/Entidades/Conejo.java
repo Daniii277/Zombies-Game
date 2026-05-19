@@ -21,8 +21,8 @@ public class Conejo extends Entidad implements Comestible {
     }
 
     //METHODS
-    public void eaten(){
-
+    public void eaten(Zombie z){
+        z.substractHunger();
     }
 
     @Override

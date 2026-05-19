@@ -24,8 +24,8 @@ public abstract class Humano extends Entidad implements Comestible {
 
     //METHODS
     @Override
-    public void eaten(){
-
+    public void eaten(Zombie z){
+        z.setHungerLevel(0);
     }
 
     @Override

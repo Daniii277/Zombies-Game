@@ -13,7 +13,7 @@ import Entidades.Humano.*;
 
 public class Zombie extends Entidad{
     private final String name;
-    private final int actionsPerRound = 3;
+    private int actionsPerRound = 3;
     private ArrayList<Comestible> itemsConsumed;
     private int damageReceived;
     private int hungerLevel;
@@ -70,6 +70,14 @@ public class Zombie extends Entidad{
 
 
     //METHODS 
+    public void addAction(){
+        this.actionsPerRound++;
+    }
+
+    public void setHungerLevel(int n){
+        this.hungerLevel = n;
+    }
+
     public void addHunger(){
         this.hungerLevel++;
     }
@@ -100,7 +108,7 @@ public class Zombie extends Entidad{
             e.getCasillaActual().getEntidades().remove(e);
             e.setCasillaActual(null);
             this.itemsConsumed.add((Comestible) e);
-            this.substractHunger();
+            ((Comestible) e).eaten(this);
             return true;
         }
         return false;

@@ -21,6 +21,12 @@ public class humanoHuidizo extends Humano{
     }
 
     @Override
+    public void eaten(Zombie z){
+        z.setHungerLevel(0);
+        z.addAction();
+    }
+
+    @Override
     public void attack(Zombie e) {
 
     }

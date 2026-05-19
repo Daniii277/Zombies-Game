@@ -4,6 +4,7 @@
  */
 package Entidades.Humano;
 
+import java.util.Random;
 import Entidades.Entidad;
 import Entidades.Zombie;
 
@@ -21,6 +22,17 @@ public class humanoIngeniero extends Humano{
     @Override
     public String toString(){
         return(super.toString() + "\nTipo : Ingeniero");
+    }
+
+    @Override
+    public void eaten(Zombie z){
+        Random rnd = new Random();
+        if(rnd.nextInt(2) == 0){
+            z.getDamage(1);
+        }
+        if(z.getHungerLevel() >= 4){
+            z.setHungerLevel(z.getHungerLevel() - 2);
+        }
     }
 
     @Override
