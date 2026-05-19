@@ -1,0 +1,6 @@
+A	0	Codazo de Ultratumba Descoyuntante	1	2	0
+Z	Matías	1	3	3	4	0	0
+B	3	5
+B	3	5
+B	3	5
+F	6	0

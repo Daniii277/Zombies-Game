@@ -1,0 +1,4 @@
+A	0	Codazo de Ultratumba Descoyuntante	1	2	0
+Z	Matías	1	5	3	4	0	0
+C	Rigoberto	3	5
+F	0	0

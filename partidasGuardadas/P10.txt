@@ -1,0 +1,14 @@
+A	0	Boomerang con peroné putrefacto	2	3	1
+Z	Agustino	1	5	0	3	0	1
+Comido	H
+Comido	H
+Comido	S
+Comido	B
+S	0	2
+S	3	5
+I	2	4
+E	4	0
+H	5	5
+C	Ramiro	0	1
+B	2	3
+F	0	0

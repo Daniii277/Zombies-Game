@@ -1,0 +1,9 @@
+A	0	Lanzamiento de peroné putrefacto	5	1	2
+Z	Eusebio	1	4	3	0	0	0
+H	3	2
+S	3	2
+B	3	2
+E	3	2
+I	3	2
+C	Rodolfo	3	2
+F	0	6

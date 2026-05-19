@@ -4,7 +4,9 @@
  */
 package Juego;
 import java.util.*;
+import java.io.*;
 import Entidades.*;
+import Ataques.AtaqueEspecial;
 import Entidades.Comestible;
 import Entidades.Humano.Humano;
 import Entidades.Humano.humanoCombatiente;
@@ -121,6 +123,16 @@ public class Juego  {
     }
 
 
+    public static Juego loadGame(String path) throws IOException {
+        // POR IMPLEMENTAR
+        return null;
+    }
+
+    public static List<AtaqueEspecial> loadAttacks(String path) throws IOException {
+        //POR IMPLEMENTAR
+        return null;
+    }
+
     public void generateRandomHuman(){
         Random rnd = new Random();
         int prob = rnd.nextInt(100) + 1; // 1 a 100
@@ -156,15 +168,15 @@ public class Juego  {
         }
     }
 
-    public void generatePlayers(int numPlayers){
-        for(int i = 0; i < numPlayers; i++){
-            Zombie z = new Zombie();
+    public void generatePlayers(String[] names, List<AtaqueEspecial> specials){
+        for(int i = 0; i < names.length; i++){
+            Zombie z = new Zombie(names[i]);
+            z.setSpecialAttack(specials.get(i));
             Casilla[][] board = gameBoard.getBoard();
             board[0][0].addEntity(z);
             z.setCasillaActual(board[0][0]);
             this.players.add(z);
         }
-
     }
 
     //Método para encontrar al humano más cercano
