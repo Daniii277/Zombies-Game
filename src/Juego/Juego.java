@@ -5,6 +5,7 @@
 package Juego;
 import java.util.*;
 import Entidades.*;
+import Entidades.Comestible;
 import Entidades.Humano.Humano;
 import Entidades.Humano.humanoCombatiente;
 import Entidades.Humano.humanoHuidizo;
@@ -25,16 +26,16 @@ public class Juego  {
     public Juego(int numZombies){
         switch (numZombies) {
             case 1:
-                this.gameBoard = new Tablero(6);
-                break;
-            case 2:
                 this.gameBoard = new Tablero(7);
                 break;
-            case 3:
+            case 2:
                 this.gameBoard = new Tablero(8);
                 break;
-            case 4:
+            case 3:
                 this.gameBoard = new Tablero(9);
+                break;
+            case 4:
+                this.gameBoard = new Tablero(10);
                 break;
         
             default:
@@ -212,17 +213,19 @@ public class Juego  {
     }
 
     public boolean winCondition(){
-        boolean result = false;
-        for(Entidad entity : this.getPlayers()){
-            if(entity.getCasillaActual() == gameBoard.getTargetBox()){
-                result = true;
-
-            }else{
-                result = false;
-                break;
+        if(this.players.isEmpty()) return false;
+        for(Zombie z : this.players){
+            if(!z.getCasillaActual().equals(gameBoard.getTargetBox())) return false;
+            boolean ateHuidizo = false;
+            for(Comestible c : z.getItemsConsumed()){
+                if(c instanceof humanoHuidizo){
+                    ateHuidizo = true;
+                    break;
+                }
             }
+            if(!ateHuidizo) return false;
         }
-        return result;
+        return true;
     }
 
     public boolean loseCondition(){

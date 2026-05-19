@@ -122,7 +122,7 @@ public class Zombie extends Entidad{
         
         Entidad entity = objetivesList.getFirst();
             int endurance = entity instanceof Conejo ? 1 : ((Humano)entity).getEndurance();
-            if(impacts > endurance){
+            if(impacts >= endurance){
                 //Se elimina a la entidad
                 entity.setState(estado.ELIMINADO);
                 c.getEntidades().remove(entity);
@@ -169,7 +169,7 @@ public class Zombie extends Entidad{
         for(Entidad entity : objetivesList){
             if(entity instanceof Conejo) continue;
             int endurance = ((Humano)entity).getEndurance();
-            if(impacts > endurance){
+            if(impacts >= endurance){
                 //Se elimina a la entidad
                 entity.setState(estado.ELIMINADO);
                 c.getEntidades().remove(entity);

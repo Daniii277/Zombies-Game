@@ -15,7 +15,7 @@ public class Main {
         Juego game = new Juego(numPlayers);
         //Se crean las entidades iniciales del tablero
         game.generatePlayers(numPlayers);
-        game.generateEntities(3*numPlayers, 5);
+        game.generateEntities(3*numPlayers, 0);
         initGame(game);
     }
 
